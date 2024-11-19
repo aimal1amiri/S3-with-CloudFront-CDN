@@ -10,16 +10,14 @@ dotenv.config();
 const region='eu-north-1'
 
 const accessKeyId=process.env.AWS_ACCESS_KEY
-//const secretAccessKey=''
+const secretAccessKey=process.env.AWS_SECRET_ACCESS_KEY
 const bucketName='media-upload-bucket-s3'
-
-
 
 
 const s3Bucket=new aws.S3({
     region,
     accessKeyId,
-    //secretAccessKey,
+    secretAccessKey,
     signatureVersion:'v4'
 })
 
@@ -33,6 +31,6 @@ export async function generateUpLoading(){
         Expires: 60
     })
 
-    const uploadURL = await s3.getSignedUrlPromise('putObject', params)
+    const uploadURL = await s3Bucket.getSignedUrl('putObject', params)
     return uploadURL
 }
