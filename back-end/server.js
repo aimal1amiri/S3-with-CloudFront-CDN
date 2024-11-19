@@ -1,10 +1,13 @@
 import express from 'express'
+import {generateUpLoading} from './s3.js'
 
 const app=express()
 
-app.get('/s3',(req,res)=>{
-    
-    res.send("it is working")
+app.use(express.static('front-end'))
+
+app.get('/s3',async (req,res)=>{
+    const url = await generateUpLoading()
+    res.send({url})
 })
 
 app.listen(5173,()=>{
