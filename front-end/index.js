@@ -10,4 +10,27 @@ imageForm.addEventListener('submit', async event => {
     const {url }=await fetch('/s3').then(res => res.json())
 
     console.log(url)
+
+
+
+    await fetch(url,{
+        method: "PUT",
+        headers:{
+            "Content-Type":"multipart/form-data"
+
+        },
+        body:file
+    })
+
+    const imageUrl=url.split('?')[0]
+    console.log(imageUrl)
+    
+
+    document.createElement("img")
+    img.src = imageUrl
+
+    document.body.appendChild(img)
+
+
+
 })
