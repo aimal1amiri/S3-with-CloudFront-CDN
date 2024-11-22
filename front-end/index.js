@@ -26,7 +26,7 @@ imageForm.addEventListener('submit', async event => {
     console.log(imageUrl)
     
 
-    document.createElement("img")
+    const img=document.createElement("img")
     img.src = imageUrl
 
     document.body.appendChild(img)

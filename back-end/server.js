@@ -12,4 +12,5 @@ app.get('/s3',async (req,res)=>{
 
 app.listen(5173,()=>{
     console.log("the server is running")
+    
 })
